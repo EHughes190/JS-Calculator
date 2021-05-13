@@ -20,15 +20,34 @@ main {
   align-items: center;
 }
 
-.screen {
-  height: 40%;
-  width: 100%;
-  background-color: cadetblue;
+.calculator {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.grid {
-  height: 60%;
+.display {
+  height: 30%;
   width: 100%;
+  background-color: cadetblue;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-size: 2.5rem;
+}
+
+.result {
+  font-size: 2rem;
+}
+
+.calculator__keys {
+  height: 50%;
+  width: 100vw;
   display: grid;
   padding: 20px;
   gap: 15px;
@@ -43,11 +62,32 @@ main {
   align-items: center;
   border-radius: 50%;
   background-color: chocolate;
+  // border: none;
+  border-color: chocolate;
+  font-size: 1.5rem;
+}
+
+.operator {
+  background-color: white;
+}
+
+.span-two {
+  grid-column: span 2;
+  border-radius: 0px;
+}
+
+@media screen and (min-width: $breakpoint-tablet) {
+  .calculator__keys,
+  .display {
+    height: 40%;
+    width: 40%;
+  }
 }
 
 @media screen and (min-width: $breakpoint-laptop) {
-  .grid {
-    height: 90%;
+  .calculator__keys,
+  .display {
+    height: 40%;
     width: 30%;
   }
 }
