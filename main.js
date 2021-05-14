@@ -4,23 +4,49 @@
 //print this operation to display
 //return result to display on equals
 
-// const numbers = document.querySelectorAll(".number");
-// const allClearBtn = document.getElementById("all-clear");
-// const deleteBtn = document.getElementById("delete");
-// const equalsBtn = document.getElementById("equals");
-// const operands = document.querySelectorAll(".operator");
-
+const calculator = document.querySelector(".calculator");
 const keys = document.querySelector(".calculator__keys");
 const operation = document.querySelector(".operation");
+let operatorUsed = false;
 
 keys.addEventListener("click", (event) => {
   if (!event.target.closest("button")) return;
 
   const key = event.target;
   const keyValue = key.textContent;
-  // console.log(keyValue);
   const displayValue = operation.textContent;
-  console.log(displayValue);
+  const type = key.dataset.type;
 
-  operation.textContent = keyValue;
+  if (type === "number") {
+    if (displayValue === "0") {
+      operation.textContent = keyValue;
+    } else {
+      operation.textContent += keyValue;
+    }
+    calculator.dataset.previousKeyType = type;
+  }
+
+  if (
+    type === "operator" &&
+    calculator.dataset.previousKeyType === "number" &&
+    !operatorUsed
+    // displayValue !== "0"
+  ) {
+    operation.textContent += keyValue;
+  }
+
+  const operationArr = operation.textContent.split("");
+
+  if (operationArr.includes("x")) {
+    operatorUsed = true;
+  }
+
+  console.log(operationArr);
+  // console.log(calculator.dataset.previousKeyType, keyValue);
+  //if number type, previous type wasn't operator - display number, set previous type as number
+  // if previous type was operator update display with new number
+
+  //if type operator - save previous input, highlight operator active, set previous type as operator.
+
+  //create calculation based upon inputs on equals press
 });

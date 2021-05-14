@@ -37,6 +37,11 @@ main {
 
 .result {
   font-size: 2rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.operation {
+  color: white;
 }
 
 .calculator__keys {
