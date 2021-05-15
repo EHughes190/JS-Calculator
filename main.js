@@ -15,7 +15,7 @@
 //BIDMAS Calculations
 //SqrRoot
 
-//VARIABLES
+//GLOBAL VARIABLES
 const calculator = document.querySelector(".calculator");
 const keys = document.querySelector(".calculator__keys");
 const operation = document.querySelector(".operation");
@@ -33,7 +33,6 @@ keys.addEventListener("click", (event) => {
   const keyValue = key.textContent;
   const displayValue = operation.textContent;
   const type = key.dataset.type;
-
   calculator.dataset.previousKeyValue = "";
 
   //NUMBER (INCLUDING DECIMAL POINT)
@@ -62,6 +61,7 @@ keys.addEventListener("click", (event) => {
 
   //Restricting operation to one operator per calculation
   const operationArr = operation.textContent.split("");
+  console.log(operationArr);
 
   if (
     operationArr.includes("x") ||
@@ -93,13 +93,45 @@ keys.addEventListener("click", (event) => {
   }
 
   if (type === "all-clear") {
-    //clear display and result
+    //clear display and result and reset all values
+    result.textContent = "";
+    operation.textContent = "";
+    calculator.dataset.firstNumber = "";
+    calculator.dataset.operator = "";
+    numAfterOperator = "";
+    operatorUsed = false;
+    isUserTyping = false;
+    hasBeenCalculated = false;
+    operationArr.length = 0;
+    console.log(
+      calculator.dataset.firstNumber,
+      calculator.dataset.operator,
+      operatorUsed,
+      numAfterOperator
+    );
   }
 
-  if (type === "delete") {
-    //delete last input
-    //if(!hasBeenCalculated) {
-    // do deletion
-    // }
-  }
+  // if (type === "delete") {
+  //   //delete last input
+  //   const lastDigit = operationArr.pop();
+  //   operation.textContent = operationArr.join("");
+
+  //   if (
+  //     lastDigit !== "+" ||
+  //     lastDigit !== "-" ||
+  //     lastDigit !== "x" ||
+  //     lastDigit !== "÷"
+  //   ) {
+  //     numAfterOperator -= lastDigit;
+  //   } else if (
+  //     lastDigit === "+" ||
+  //     lastDigit === "-" ||
+  //     lastDigit === "x" ||
+  //     lastDigit === "÷"
+  //   ) {
+  //     operatorUsed = false;
+  //     calculator.dataset.previousKeyType = "number";
+  //   }
+  // }
+  console.log(calculator.dataset.previousKeyType);
 });
