@@ -44,12 +44,13 @@ keys.addEventListener("click", (event) => {
       numAfterOperator += keyValue;
     }
     calculator.dataset.previousKeyType = type;
+    console.log(numAfterOperator);
   }
 
   //OPERATOR
   if (
     type === "operator" &&
-    calculator.dataset.previousKeyType === "number" &&
+    (calculator.dataset.previousKeyType === "number" || keyValue === "-") &&
     !operatorUsed
   ) {
     isUserTyping = false;
@@ -61,13 +62,23 @@ keys.addEventListener("click", (event) => {
 
   //Restricting operation to one operator per calculation
   const operationArr = operation.textContent.split("");
-  console.log(operationArr);
+  //console.log(operationArr);
 
   if (
     operationArr.includes("x") ||
     operationArr.includes("÷") ||
-    operationArr.includes("+") ||
-    operationArr.includes("-")
+    operationArr.includes("+")
+    //operationArr.includes("-")
+  ) {
+    operatorUsed = true;
+  }
+
+  //Allowing "-" to be used for both negative numbers and as an operator
+  if (
+    operationArr.includes("-") &&
+    (!operationArr.includes("x") ||
+      !operationArr.includes("÷") ||
+      !operationArr.includes("+"))
   ) {
     operatorUsed = true;
   }
@@ -79,7 +90,7 @@ keys.addEventListener("click", (event) => {
     const secondNumber = parseFloat(numAfterOperator);
     const operator = calculator.dataset.operator;
 
-    console.log(firstNumber, operator, secondNumber);
+    //console.log(firstNumber, operator, secondNumber);
 
     if (operator === "+") {
       result.textContent = firstNumber + secondNumber;
@@ -103,12 +114,12 @@ keys.addEventListener("click", (event) => {
     isUserTyping = false;
     hasBeenCalculated = false;
     operationArr.length = 0;
-    console.log(
-      calculator.dataset.firstNumber,
-      calculator.dataset.operator,
-      operatorUsed,
-      numAfterOperator
-    );
+    // console.log(
+    //   calculator.dataset.firstNumber,
+    //   calculator.dataset.operator,
+    //   operatorUsed,
+    //   numAfterOperator
+    // );
   }
 
   // if (type === "delete") {
@@ -133,5 +144,6 @@ keys.addEventListener("click", (event) => {
   //     calculator.dataset.previousKeyType = "number";
   //   }
   // }
-  console.log(calculator.dataset.previousKeyType);
+
+  // console.log(calculator.dataset.previousKeyType);
 });
