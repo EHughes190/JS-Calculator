@@ -6,7 +6,7 @@
 //return result to result display on equals
 
 //LOGIC
-//if number type, previous type wasn't operator - display number, set previous type as number.
+//if number type, and previous type wasn't operator - display number, set previous type as number.
 // if previous type was operator update display with new number
 //if type operator - save previous input, highlight operator active, set previous type as operator.
 //create calculation based upon inputs on equals press
@@ -64,24 +64,20 @@ keys.addEventListener("click", (event) => {
   const operationArr = operation.textContent.split("");
   //console.log(operationArr);
 
-  if (
-    operationArr.includes("x") ||
-    operationArr.includes("÷") ||
-    operationArr.includes("+")
-    //operationArr.includes("-")
-  ) {
-    operatorUsed = true;
-  }
+  if (operationArr[0] === "-")
+    if (
+      operationArr.includes("x") ||
+      operationArr.includes("÷") ||
+      operationArr.includes("+")
+      //operationArr.includes("-")
+    ) {
+      operatorUsed = true;
+    }
 
   //Allowing "-" to be used for both negative numbers and as an operator
-  if (
-    operationArr.includes("-") &&
-    (!operationArr.includes("x") ||
-      !operationArr.includes("÷") ||
-      !operationArr.includes("+"))
-  ) {
-    operatorUsed = true;
-  }
+  //if arr includes one of the operators and index[0] is "-" -> operatorUsed is true
+  //if index[0] = "-" and arr doesn't contain another operator, operatorUsed is false
+  //
 
   //EQUALS BUTTON
   if (type === "equal") {
@@ -120,6 +116,18 @@ keys.addEventListener("click", (event) => {
     //   operatorUsed,
     //   numAfterOperator
     // );
+  }
+
+  if (type === "answer") {
+    operation.textContent = result.textContent;
+    result.textContent = "";
+    calculator.dataset.firstNumber = operation.textContent;
+    calculator.dataset.operator = "";
+    numAfterOperator = "";
+    operatorUsed = false;
+    isUserTyping = false;
+    hasBeenCalculated = false;
+    operationArr.length = 0;
   }
 
   // if (type === "delete") {
