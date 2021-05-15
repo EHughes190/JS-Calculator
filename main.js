@@ -1,9 +1,21 @@
+//BASIC REQUIREMENTS
 // take in first input print to display
 //operator print to display
 //take in second input if previous two steps complete
 //print this operation to display
 //return result to result display on equals
 
+//LOGIC
+//if number type, previous type wasn't operator - display number, set previous type as number.
+// if previous type was operator update display with new number
+//if type operator - save previous input, highlight operator active, set previous type as operator.
+//create calculation based upon inputs on equals press
+
+//FUTURE
+//BIDMAS Calculations
+//SqrRoot
+
+//VARIABLES
 const calculator = document.querySelector(".calculator");
 const keys = document.querySelector(".calculator__keys");
 const operation = document.querySelector(".operation");
@@ -13,6 +25,7 @@ let isUserTyping = false;
 let hasBeenCalculated = false;
 let numAfterOperator = "";
 
+//MAIN EVENT LISTENER FOR BUTTON PRESS
 keys.addEventListener("click", (event) => {
   if (!event.target.closest("button")) return;
 
@@ -23,25 +36,22 @@ keys.addEventListener("click", (event) => {
 
   calculator.dataset.previousKeyValue = "";
 
+  //NUMBER (INCLUDING DECIMAL POINT)
   if (type === "number") {
     isUserTyping = true;
-    // if (displayValue === "0") {
-    //   operation.textContent = keyValue;
-    // } else {
     operation.textContent += keyValue;
-    // }
+
     if (isUserTyping && operatorUsed) {
       numAfterOperator += keyValue;
     }
     calculator.dataset.previousKeyType = type;
   }
-  // console.log(secondNumber);
 
+  //OPERATOR
   if (
     type === "operator" &&
     calculator.dataset.previousKeyType === "number" &&
     !operatorUsed
-    // displayValue !== "0"
   ) {
     isUserTyping = false;
     operation.textContent += keyValue;
@@ -49,10 +59,6 @@ keys.addEventListener("click", (event) => {
     calculator.dataset.operator = keyValue;
     calculator.dataset.firstNumber = displayValue;
   }
-
-  // if (userIsInTheMiddleOfTyping) {
-  //   // calculator.dataset.secondNumber = //last number(S) + keyValue
-  // }
 
   //Restricting operation to one operator per calculation
   const operationArr = operation.textContent.split("");
@@ -96,11 +102,4 @@ keys.addEventListener("click", (event) => {
     // do deletion
     // }
   }
-
-  //if number type, previous type wasn't operator - display number, set previous type as number
-  // if previous type was operator update display with new number
-
-  //if type operator - save previous input, highlight operator active, set previous type as operator.
-
-  //create calculation based upon inputs on equals press
 });
