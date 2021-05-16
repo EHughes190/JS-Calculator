@@ -24,6 +24,7 @@ const calculator = document.querySelector(".calculator");
 const keys = document.querySelector(".calculator__keys");
 const operation = document.querySelector(".operation");
 const result = document.querySelector(".result");
+
 let operatorUsed = false;
 let isUserTyping = false;
 let hasBeenCalculated = false;
@@ -69,6 +70,7 @@ keys.addEventListener("click", (event) => {
     if (keyValue !== "-") {
       operatorUsed = true;
     }
+
     isUserTyping = false;
     operation.textContent += keyValue;
     calculator.dataset.previousKeyType = type;
@@ -101,6 +103,8 @@ keys.addEventListener("click", (event) => {
     } else if (operator === "÷") {
       result.textContent = firstNumber / secondNumber;
     }
+
+    console.log(result.textContent);
   }
 
   if (type === "all-clear") {
