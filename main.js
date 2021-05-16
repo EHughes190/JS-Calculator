@@ -6,10 +6,13 @@
 //return result to result display on equals
 
 //LOGIC
+//Limit calc to one operation at a time initially.
 //if number type, and previous type wasn't operator - display number, set previous type as number.
-// if previous type was operator update display with new number
-//if type operator - save previous input, highlight operator active, set previous type as operator.
-//create calculation based upon inputs on equals press
+//if type operator - save previous input as firstNumber, set previous type as operator. Save operator value.
+// if previous type was operator update display with new number. Save new number as secondNumber
+//create calculation based upon inputs on equals press. Print result to screen.
+//A/C resets all global and local values,
+//Ans prints the result to operation, and resets other values.
 
 //FUTURE
 //BIDMAS Calculations
@@ -24,6 +27,7 @@ let operatorUsed = false;
 let isUserTyping = false;
 let hasBeenCalculated = false;
 let numAfterOperator = "";
+let operationArr = [];
 
 //MAIN EVENT LISTENER FOR BUTTON PRESS
 keys.addEventListener("click", (event) => {
@@ -48,36 +52,28 @@ keys.addEventListener("click", (event) => {
   }
 
   //OPERATOR
+  //Restricting operation to one operator per calculation, but also allowing "-" to be both an indicator of value and an operator
   if (
     type === "operator" &&
     (calculator.dataset.previousKeyType === "number" || keyValue === "-") &&
     !operatorUsed
   ) {
+    if (keyValue !== "-") {
+      operatorUsed = true;
+    }
     isUserTyping = false;
     operation.textContent += keyValue;
     calculator.dataset.previousKeyType = type;
     calculator.dataset.operator = keyValue;
     calculator.dataset.firstNumber = displayValue;
-  }
+    operationArr = operation.textContent.split("");
 
-  //Restricting operation to one operator per calculation
-  const operationArr = operation.textContent.split("");
-  //console.log(operationArr);
-
-  if (operationArr[0] === "-")
-    if (
-      operationArr.includes("x") ||
-      operationArr.includes("÷") ||
-      operationArr.includes("+")
-      //operationArr.includes("-")
-    ) {
+    if (keyValue === "-" && operationArr[0] !== "-") {
       operatorUsed = true;
     }
+  }
 
-  //Allowing "-" to be used for both negative numbers and as an operator
-  //if arr includes one of the operators and index[0] is "-" -> operatorUsed is true
-  //if index[0] = "-" and arr doesn't contain another operator, operatorUsed is false
-  //
+  console.log(operationArr, operatorUsed);
 
   //EQUALS BUTTON
   if (type === "equal") {
@@ -110,12 +106,6 @@ keys.addEventListener("click", (event) => {
     isUserTyping = false;
     hasBeenCalculated = false;
     operationArr.length = 0;
-    // console.log(
-    //   calculator.dataset.firstNumber,
-    //   calculator.dataset.operator,
-    //   operatorUsed,
-    //   numAfterOperator
-    // );
   }
 
   if (type === "answer") {
@@ -129,29 +119,4 @@ keys.addEventListener("click", (event) => {
     hasBeenCalculated = false;
     operationArr.length = 0;
   }
-
-  // if (type === "delete") {
-  //   //delete last input
-  //   const lastDigit = operationArr.pop();
-  //   operation.textContent = operationArr.join("");
-
-  //   if (
-  //     lastDigit !== "+" ||
-  //     lastDigit !== "-" ||
-  //     lastDigit !== "x" ||
-  //     lastDigit !== "÷"
-  //   ) {
-  //     numAfterOperator -= lastDigit;
-  //   } else if (
-  //     lastDigit === "+" ||
-  //     lastDigit === "-" ||
-  //     lastDigit === "x" ||
-  //     lastDigit === "÷"
-  //   ) {
-  //     operatorUsed = false;
-  //     calculator.dataset.previousKeyType = "number";
-  //   }
-  // }
-
-  // console.log(calculator.dataset.previousKeyType);
 });
