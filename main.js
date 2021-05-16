@@ -15,6 +15,7 @@
 //Ans prints the result to operation, and resets other values.
 
 //FUTURE
+//Delete button
 //BIDMAS Calculations
 //SqrRoot
 
@@ -35,12 +36,18 @@ keys.addEventListener("click", (event) => {
 
   const key = event.target;
   const keyValue = key.textContent;
+  //Do I need displayValue?
   const displayValue = operation.textContent;
   const type = key.dataset.type;
   calculator.dataset.previousKeyValue = "";
 
   //NUMBER (INCLUDING DECIMAL POINT)
   if (type === "number") {
+    operationArr = operation.textContent.split("");
+
+    if (keyValue === "." && operationArr[operationArr.length - 1] === ".")
+      return;
+
     isUserTyping = true;
     operation.textContent += keyValue;
 
@@ -48,11 +55,12 @@ keys.addEventListener("click", (event) => {
       numAfterOperator += keyValue;
     }
     calculator.dataset.previousKeyType = type;
-    console.log(numAfterOperator);
+    // console.log(numAfterOperator);
   }
 
   //OPERATOR
   //Restricting operation to one operator per calculation, but also allowing "-" to be both an indicator of value and an operator
+
   if (
     type === "operator" &&
     (calculator.dataset.previousKeyType === "number" || keyValue === "-") &&
@@ -73,7 +81,7 @@ keys.addEventListener("click", (event) => {
     }
   }
 
-  console.log(operationArr, operatorUsed);
+  //console.log(operationArr, operatorUsed);
 
   //EQUALS BUTTON
   if (type === "equal") {
@@ -109,6 +117,7 @@ keys.addEventListener("click", (event) => {
   }
 
   if (type === "answer") {
+    //reset all values but print result to display and save that as firstNumber
     operation.textContent = result.textContent;
     result.textContent = "";
     calculator.dataset.firstNumber = operation.textContent;
