@@ -40,8 +40,15 @@ keys.addEventListener("click", (event) => {
 
   //NUMBER (INCLUDING DECIMAL POINT)
   if (type === "number") {
-    if (keyValue === "." && operationArr[operationArr.length - 1] === ".")
+    if (keyValue === "." && operationArr[operationArr.length - 1] === ".") {
       return;
+    }
+
+    // for (let i = 0; i < operationArr.length; i++) {
+    //   if (operationArr[i].contains(".")) {
+    //     return;
+    //   }
+    // }
 
     operation.textContent += keyValue;
     operationArr = operation.textContent.trim().split(" ");
