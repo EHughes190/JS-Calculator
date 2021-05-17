@@ -26,9 +26,7 @@ const operation = document.querySelector(".operation");
 const result = document.querySelector(".result");
 
 let operatorUsed = false;
-let isUserTyping = false;
 let hasBeenCalculated = false;
-let numAfterOperator = "";
 let operationArr = [];
 
 //MAIN EVENT LISTENER FOR BUTTON PRESS
@@ -37,26 +35,17 @@ keys.addEventListener("click", (event) => {
 
   const key = event.target;
   const keyValue = key.textContent;
-  //Do I need displayValue?
-  const displayValue = operation.textContent;
   const type = key.dataset.type;
   calculator.dataset.previousKeyValue = "";
 
   //NUMBER (INCLUDING DECIMAL POINT)
   if (type === "number") {
-    operationArr = operation.textContent.split("");
-
     if (keyValue === "." && operationArr[operationArr.length - 1] === ".")
       return;
 
-    isUserTyping = true;
     operation.textContent += keyValue;
-
-    if (isUserTyping && operatorUsed) {
-      numAfterOperator += keyValue;
-    }
+    operationArr = operation.textContent.trim().split(" ");
     calculator.dataset.previousKeyType = type;
-    // console.log(numAfterOperator);
   }
 
   //OPERATOR
@@ -64,43 +53,47 @@ keys.addEventListener("click", (event) => {
 
   if (
     type === "operator" &&
-    (calculator.dataset.previousKeyType === "number" || keyValue === "-") &&
+    (calculator.dataset.previousKeyType === "number" || keyValue === " - ") &&
     !operatorUsed
   ) {
-    if (keyValue !== "-") {
+    if (keyValue !== " - ") {
       operatorUsed = true;
     }
 
-    isUserTyping = false;
     operation.textContent += keyValue;
     calculator.dataset.previousKeyType = type;
-    calculator.dataset.operator = keyValue;
-    calculator.dataset.firstNumber = displayValue;
-    operationArr = operation.textContent.split("");
+    calculator.dataset.firstNumber = operation.textContent;
+    operationArr = operation.textContent.trim().split(" ");
 
-    if (keyValue === "-" && operationArr[0] !== "-") {
+    if (keyValue === " - " && operationArr[0] !== "-") {
       operatorUsed = true;
     }
+
+    if (operationArr[0] === "-") {
+      const negative = operationArr[0] + operationArr[1];
+      calculator.dataset.firstNumber = negative;
+    }
+    calculator.dataset.operator = keyValue;
   }
 
-  //console.log(operationArr, operatorUsed);
+  console.log(operationArr, operatorUsed);
 
   //EQUALS BUTTON
   if (type === "equal") {
     hasBeenCalculated = true;
     const firstNumber = parseFloat(calculator.dataset.firstNumber);
-    const secondNumber = parseFloat(numAfterOperator);
+    const secondNumber = parseFloat(operationArr[operationArr.length - 1]);
     const operator = calculator.dataset.operator;
 
     //console.log(firstNumber, operator, secondNumber);
 
-    if (operator === "+") {
+    if (operator === " + ") {
       result.textContent = firstNumber + secondNumber;
-    } else if (operator === "-") {
+    } else if (operator === " - ") {
       result.textContent = firstNumber - secondNumber;
-    } else if (operator === "x") {
+    } else if (operator === " × ") {
       result.textContent = firstNumber * secondNumber;
-    } else if (operator === "÷") {
+    } else if (operator === " ÷ ") {
       result.textContent = firstNumber / secondNumber;
     }
 

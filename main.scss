@@ -5,6 +5,11 @@ $font-main: "Montserrat", sans-serif;
 $breakpoint-tablet: 768px;
 $breakpoint-laptop: 1024px;
 
+$color-primary: rgb(21, 21, 21);
+$color-secondary: rgb(250, 251, 246);
+$color-accent: rgb(7, 45, 68);
+$color-tertiary: rgb(210, 105, 30);
+
 * {
   margin: 0;
   padding: 0;
@@ -12,95 +17,149 @@ $breakpoint-laptop: 1024px;
   font-family: $font-main;
 }
 
-main {
+body {
   height: 100vh;
+  background: linear-gradient(to top, #565a75, #c6b7be);
+}
+
+header {
+  height: 20vh;
+  text-align: center;
+  padding: 10px;
+  .title {
+    font-size: 1rem;
+    padding: 10px;
+  }
+  .info {
+    padding: 10px;
+    font-size: 0.75rem;
+  }
+}
+
+main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
 
-.calculator {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-direction: column;
-  background-color: #fafbf6;
-
-  .display {
-    height: 20%;
-    width: 90%;
-    background-color: cadetblue;
-    border: 2px solid red;
-    border-radius: 10px;
-    margin: 20px;
+  .calculator {
+    height: 80vh;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    padding: 20px;
     justify-content: flex-end;
-    align-items: flex-end;
-    font-size: 2.5rem;
-    word-wrap: break-word;
-    word-break: break-all;
-    overflow-y: auto;
+    align-items: center;
+    flex-direction: column;
+    background-color: $color-primary;
 
-    .result {
-      font-size: 2.5rem;
-      color: rgba(255, 255, 255, 0.4);
+    .display {
+      height: 25%;
+      width: 90%;
+      background-color: rgba(255, 255, 255, 0.4);
+      border-radius: 5px;
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      justify-content: flex-end;
+      align-items: flex-end;
+      word-wrap: break-word;
+      word-break: break-all;
+      overflow-y: auto;
+
+      .result {
+        font-size: 2.5rem;
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .operation {
+        font-size: 3.5rem;
+        color: rgb(255, 255, 255);
+      }
     }
 
-    .operation {
-      font-size: 3.5rem;
-      color: rgb(255, 255, 255);
+    .calculator__keys {
+      height: 60%;
+      width: 100%;
+      display: grid;
+      padding: 20px;
+      gap: 5px;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+
+      .button {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-color: #151515;
+        border-radius: 5px;
+        background-color: $color-primary;
+        font-size: 1.75rem;
+        color: $color-secondary;
+      }
+
+      .button:hover {
+        background-color: rgba(70, 69, 69, 0.1);
+        color: $color-tertiary;
+        // transform: scale(1.02);
+      }
+      .operator {
+        background-color: rgb(86, 90, 117, 0.4);
+        font-size: 2.5rem;
+      }
+
+      .operator:hover {
+        background-color: rgb(86, 90, 117);
+      }
+
+      .span-two {
+        grid-column: span 2;
+        border-radius: 0px;
+        background-color: rgb(210, 105, 30, 0.8);
+        color: $color-secondary;
+      }
+
+      .span-two:hover {
+        background-color: $color-tertiary;
+        color: $color-secondary;
+      }
+
+      #answer {
+        background-color: rgb(7, 45, 68, 0.6);
+      }
+
+      #answer:hover {
+        background-color: $color-accent;
+      }
     }
   }
+}
 
-  .calculator__keys {
-    height: 60%;
-    width: 100%;
-    display: grid;
-    padding: 20px;
-    gap: 15px;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-
-    .button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      border-color: #151515;
+@media screen and (min-width: $breakpoint-tablet) {
+  header {
+    text-align: center;
+    padding: 10px;
+    .title {
       font-size: 1.5rem;
     }
-
-    .button:hover {
-      background-color: wheat;
+    .info {
+      padding: 5px;
+      font-size: 1rem;
     }
-    .operator {
-      background-color: #565a75;
-    }
+  }
 
-    .span-two {
-      grid-column: span 2;
-      border-radius: 0px;
+  main {
+    .calculator {
+      width: 60%;
+      height: 70vh;
     }
   }
 }
 
-// @media screen and (min-width: $breakpoint-tablet) {
-//   .calculator__keys,
-//   .display {
-//     height: 40%;
-//     width: 40%;
-//   }
-// }
-
-// @media screen and (min-width: $breakpoint-laptop) {
-//   .calculator__keys,
-//   .display {
-//     height: 40%;
-//     width: 30%;
-//   }
-// }
+@media screen and (min-width: $breakpoint-laptop) {
+  main {
+    .calculator {
+      width: 35%;
+    }
+  }
+}

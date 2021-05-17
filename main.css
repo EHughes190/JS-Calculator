@@ -6,73 +6,131 @@
   font-family: "Montserrat", sans-serif;
 }
 
-main {
+body {
   height: 100vh;
+  background: linear-gradient(to top, #565a75, #c6b7be);
+}
+
+header {
+  height: 20vh;
+  text-align: center;
+  padding: 10px;
+}
+header .title {
+  font-size: 1rem;
+  padding: 10px;
+}
+header .info {
+  padding: 10px;
+  font-size: 0.75rem;
+}
+
+main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
-.calculator {
-  height: 100vh;
+main .calculator {
+  height: 80vh;
   width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  background-color: #fafbf6;
-  box-shadow: 0px 4px 8px 0px, black;
+  background-color: #151515;
 }
-.calculator .display {
-  height: 20%;
+main .calculator .display {
+  height: 25%;
   width: 90%;
-  background-color: cadetblue;
-  border: 2px solid red;
-  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
   margin: 20px;
   display: flex;
   flex-direction: column;
   padding: 20px;
   justify-content: flex-end;
   align-items: flex-end;
-  font-size: 2.5rem;
   word-wrap: break-word;
   word-break: break-all;
   overflow-y: auto;
 }
-.calculator .display .result {
+main .calculator .display .result {
   font-size: 2.5rem;
   color: rgba(255, 255, 255, 0.4);
 }
-.calculator .display .operation {
+main .calculator .display .operation {
   font-size: 3.5rem;
   color: white;
 }
-.calculator .calculator__keys {
+main .calculator .calculator__keys {
   height: 60%;
   width: 100%;
   display: grid;
   padding: 20px;
-  gap: 15px;
+  gap: 5px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
 }
-.calculator .calculator__keys .button {
+main .calculator .calculator__keys .button {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
   border-color: #151515;
-  font-size: 1.5rem;
+  border-radius: 5px;
+  background-color: #151515;
+  font-size: 1.75rem;
+  color: #fafbf6;
 }
-.calculator .calculator__keys .button:hover {
-  background-color: wheat;
+main .calculator .calculator__keys .button:hover {
+  background-color: rgba(70, 69, 69, 0.1);
+  color: chocolate;
 }
-.calculator .calculator__keys .operator {
+main .calculator .calculator__keys .operator {
+  background-color: rgba(86, 90, 117, 0.4);
+  font-size: 2.5rem;
+}
+main .calculator .calculator__keys .operator:hover {
   background-color: #565a75;
 }
-.calculator .calculator__keys .span-two {
+main .calculator .calculator__keys .span-two {
   grid-column: span 2;
   border-radius: 0px;
+  background-color: rgba(210, 105, 30, 0.8);
+  color: #fafbf6;
+}
+main .calculator .calculator__keys .span-two:hover {
+  background-color: chocolate;
+  color: #fafbf6;
+}
+main .calculator .calculator__keys #answer {
+  background-color: rgba(7, 45, 68, 0.6);
+}
+main .calculator .calculator__keys #answer:hover {
+  background-color: #072d44;
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    text-align: center;
+    padding: 10px;
+  }
+  header .title {
+    font-size: 1.5rem;
+  }
+  header .info {
+    padding: 5px;
+    font-size: 1rem;
+  }
+
+  main .calculator {
+    width: 60%;
+    height: 70vh;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main .calculator {
+    width: 35%;
+  }
 }
