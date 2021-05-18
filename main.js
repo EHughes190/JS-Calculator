@@ -40,15 +40,13 @@ keys.addEventListener("click", (event) => {
 
   //NUMBER (INCLUDING DECIMAL POINT)
   if (type === "number") {
-    if (keyValue === "." && operationArr[operationArr.length - 1] === ".") {
-      return;
+    //Prevents duplicate decimal points
+    if (operationArr.length > 0 && keyValue === ".") {
+      const dotCheck = operationArr[operationArr.length - 1].includes(".");
+      if (dotCheck === true) {
+        return;
+      }
     }
-
-    // for (let i = 0; i < operationArr.length; i++) {
-    //   if (operationArr[i].contains(".")) {
-    //     return;
-    //   }
-    // }
 
     operation.textContent += keyValue;
     operationArr = operation.textContent.trim().split(" ");
@@ -72,6 +70,7 @@ keys.addEventListener("click", (event) => {
     calculator.dataset.firstNumber = operation.textContent;
     operationArr = operation.textContent.trim().split(" ");
 
+    //Allows minus to be an indicator of value as well as an operator
     if (keyValue === " - " && operationArr[0] !== "-") {
       operatorUsed = true;
     }
@@ -83,16 +82,12 @@ keys.addEventListener("click", (event) => {
     calculator.dataset.operator = keyValue;
   }
 
-  console.log(operationArr, operatorUsed);
-
   //EQUALS BUTTON
   if (type === "equal") {
     hasBeenCalculated = true;
     const firstNumber = parseFloat(calculator.dataset.firstNumber);
     const secondNumber = parseFloat(operationArr[operationArr.length - 1]);
     const operator = calculator.dataset.operator;
-
-    //console.log(firstNumber, operator, secondNumber);
 
     if (operator === " + ") {
       result.textContent = firstNumber + secondNumber;
@@ -103,8 +98,6 @@ keys.addEventListener("click", (event) => {
     } else if (operator === " ÷ ") {
       result.textContent = firstNumber / secondNumber;
     }
-
-    console.log(result.textContent);
   }
 
   if (type === "all-clear") {

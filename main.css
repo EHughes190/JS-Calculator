@@ -15,6 +15,7 @@ header {
   height: 20vh;
   text-align: center;
   padding: 10px;
+  color: #fafbf6;
 }
 header .title {
   font-size: 1rem;
@@ -44,13 +45,14 @@ main .calculator .display {
   height: 25%;
   width: 90%;
   background-color: rgba(255, 255, 255, 0.4);
+  border: none;
   border-radius: 5px;
-  margin: 20px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
   justify-content: flex-end;
   align-items: flex-end;
+  padding: 20px;
+  margin: 20px;
   word-wrap: break-word;
   word-break: break-all;
   overflow-y: auto;
