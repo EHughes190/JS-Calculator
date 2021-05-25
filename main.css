@@ -11,29 +11,31 @@ body {
   width: 100vw;
   background: linear-gradient(to top, #565a75, #c6b7be);
 }
-
-header {
+body header {
   height: 20vh;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 5px;
   color: #fafbf6;
 }
-header .title {
+body header .title {
   font-size: 1em;
 }
-header .info {
+body header .info {
   padding: 5px;
   font-size: 0.75em;
 }
-
-main {
+body main {
   height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-main .calculator {
+body main .calculator {
   height: 100%;
   width: 100%;
   display: flex;
@@ -41,7 +43,7 @@ main .calculator {
   align-items: center;
   background-color: #151515;
 }
-main .calculator .display {
+body main .calculator .display {
   height: 25%;
   width: 90%;
   background-color: rgba(255, 255, 255, 0.4);
@@ -57,15 +59,15 @@ main .calculator .display {
   word-break: break-all;
   overflow-y: auto;
 }
-main .calculator .display .result {
+body main .calculator .display .result {
   font-size: 3em;
   color: rgba(255, 255, 255, 0.4);
 }
-main .calculator .display .operation {
+body main .calculator .display .operation {
   font-size: 2em;
   color: white;
 }
-main .calculator .calculator__keys {
+body main .calculator .calculator__keys {
   height: 75%;
   width: 100%;
   display: grid;
@@ -74,7 +76,7 @@ main .calculator .calculator__keys {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
 }
-main .calculator .calculator__keys .button {
+body main .calculator .calculator__keys .button {
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -85,77 +87,76 @@ main .calculator .calculator__keys .button {
   font-size: 1.75rem;
   color: #fafbf6;
 }
-main .calculator .calculator__keys .button:hover {
+body main .calculator .calculator__keys .button:hover {
   background-color: rgba(70, 69, 69, 0.1);
   color: chocolate;
 }
-main .calculator .calculator__keys .operator {
+body main .calculator .calculator__keys .operator {
   background-color: rgba(86, 90, 117, 0.4);
   font-size: 2.5rem;
 }
-main .calculator .calculator__keys .operator:hover {
+body main .calculator .calculator__keys .operator:hover {
   background-color: #565a75;
 }
-main .calculator .calculator__keys .span-two {
+body main .calculator .calculator__keys .span-two {
   grid-column: span 2;
   border-radius: 0px;
   background-color: rgba(210, 105, 30, 0.8);
   color: #fafbf6;
 }
-main .calculator .calculator__keys .span-two:hover {
+body main .calculator .calculator__keys .span-two:hover {
   background-color: chocolate;
   color: #fafbf6;
 }
-main .calculator .calculator__keys #answer {
+body main .calculator .calculator__keys #answer {
   background-color: rgba(7, 45, 68, 0.6);
 }
-main .calculator .calculator__keys #answer:hover {
+body main .calculator .calculator__keys #answer:hover {
   background-color: #072d44;
 }
 
 @media screen and (min-width: 768px) {
-  header {
+  body header {
     height: 15vh;
     text-align: center;
     padding-top: 10px;
   }
-  header .title {
+  body header .title {
+    font-size: 1.5em;
+  }
+  body header .info {
     font-size: 1em;
   }
-  header .info {
-    font-size: 0.5em;
-  }
-
-  main {
+  body main {
     height: 85vh;
   }
-  main .calculator {
-    width: 60%;
+  body main .calculator {
+    width: 75%;
     height: 90%;
   }
-  main .calculator .display {
+  body main .calculator .display {
     height: 30%;
     padding: 10px;
     margin: 15px;
   }
-  main .calculator .display .operation {
+  body main .calculator .display .operation {
     font-size: 4em;
   }
-  main .calculator .display .result {
+  body main .calculator .display .result {
     font-size: 3.5em;
   }
-  main .calculator .calculator__keys {
+  body main .calculator .calculator__keys {
     height: 80%;
   }
 }
 @media screen and (min-width: 1024px) {
-  main .calculator {
-    width: 35%;
+  body main .calculator {
+    width: 50%;
   }
-  main .calculator .display .operation {
+  body main .calculator .display .operation {
     font-size: 4em;
   }
-  main .calculator .display .result {
+  body main .calculator .display .result {
     font-size: 2.5em;
   }
 }

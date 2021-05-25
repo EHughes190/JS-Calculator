@@ -2,6 +2,7 @@
 
 $font-main: "Montserrat", sans-serif;
 
+$breakpoint-phone-landscape: 576px;
 $breakpoint-tablet: 768px;
 $breakpoint-laptop: 1024px;
 
@@ -21,174 +22,180 @@ body {
   height: 100vh;
   width: 100vw;
   background: linear-gradient(to top, #565a75, #c6b7be);
-}
-
-header {
-  height: 20vh;
-  text-align: center;
-  padding: 5px;
-  color: $color-secondary;
-  .title {
-    font-size: 1em;
-  }
-  .info {
-    padding: 5px;
-    font-size: 0.75em;
-  }
-}
-
-main {
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  .calculator {
-    height: 100%;
-    width: 100%;
+  header {
+    height: 20vh;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    //justify-content: flex-start;
     align-items: center;
-    background-color: $color-primary;
+    justify-content: center;
+    padding: 5px;
+    color: $color-secondary;
+    .title {
+      font-size: 1em;
+    }
+    .info {
+      padding: 5px;
+      font-size: 0.75em;
+    }
+  }
 
-    .display {
-      height: 25%;
-      width: 90%;
-      background-color: rgba(255, 255, 255, 0.4);
-      border: none;
-      border-radius: 5px;
+  main {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .calculator {
+      height: 100%;
+      width: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-end;
-      padding: 10px;
-      margin: 20px;
-      word-wrap: break-word;
-      word-break: break-all;
-      overflow-y: auto;
+      //justify-content: flex-start;
+      align-items: center;
+      background-color: $color-primary;
 
-      .result {
-        font-size: 3em;
-        color: rgba(255, 255, 255, 0.4);
-      }
-
-      .operation {
-        font-size: 2em;
-        color: rgb(255, 255, 255);
-      }
-    }
-
-    .calculator__keys {
-      height: 75%;
-      width: 100%;
-      display: grid;
-      padding: 10px;
-      gap: 5px;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(5, 1fr);
-
-      .button {
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-color: #151515;
+      .display {
+        height: 25%;
+        width: 90%;
+        background-color: rgba(255, 255, 255, 0.4);
+        border: none;
         border-radius: 5px;
-        background-color: $color-primary;
-        font-size: 1.75rem;
-        color: $color-secondary;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+        padding: 10px;
+        margin: 20px;
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow-y: auto;
+
+        .result {
+          font-size: 3em;
+          color: rgba(255, 255, 255, 0.4);
+        }
+
+        .operation {
+          font-size: 2em;
+          color: rgb(255, 255, 255);
+        }
       }
 
-      .button:hover {
-        background-color: rgba(70, 69, 69, 0.1);
-        color: $color-tertiary;
-        // transform: scale(1.02);
-      }
-      .operator {
-        background-color: rgb(86, 90, 117, 0.4);
-        font-size: 2.5rem;
-      }
+      .calculator__keys {
+        height: 75%;
+        width: 100%;
+        display: grid;
+        padding: 10px;
+        gap: 5px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(5, 1fr);
 
-      .operator:hover {
-        background-color: rgb(86, 90, 117);
-      }
+        .button {
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-color: #151515;
+          border-radius: 5px;
+          background-color: $color-primary;
+          font-size: 1.75rem;
+          color: $color-secondary;
+        }
 
-      .span-two {
-        grid-column: span 2;
-        border-radius: 0px;
-        background-color: rgb(210, 105, 30, 0.8);
-        color: $color-secondary;
-      }
+        .button:hover {
+          background-color: rgba(70, 69, 69, 0.1);
+          color: $color-tertiary;
+        }
+        .operator {
+          background-color: rgb(86, 90, 117, 0.4);
+          font-size: 2.5rem;
+        }
 
-      .span-two:hover {
-        background-color: $color-tertiary;
-        color: $color-secondary;
-      }
+        .operator:hover {
+          background-color: rgb(86, 90, 117);
+        }
 
-      #answer {
-        background-color: rgb(7, 45, 68, 0.6);
-      }
+        .span-two {
+          grid-column: span 2;
+          border-radius: 0px;
+          background-color: rgb(210, 105, 30, 0.8);
+          color: $color-secondary;
+        }
 
-      #answer:hover {
-        background-color: $color-accent;
+        .span-two:hover {
+          background-color: $color-tertiary;
+          color: $color-secondary;
+        }
+
+        #answer {
+          background-color: rgb(7, 45, 68, 0.6);
+        }
+
+        #answer:hover {
+          background-color: $color-accent;
+        }
       }
     }
   }
 }
 
 @media screen and (min-width: $breakpoint-tablet) {
-  header {
-    height: 15vh;
-    text-align: center;
-    padding-top: 10px;
-    .title {
-      font-size: 1em;
-    }
-    .info {
-      font-size: 0.5em;
-    }
-  }
-
-  main {
-    height: 85vh;
-    .calculator {
-      width: 60%;
-      height: 90%;
-
-      .display {
-        height: 30%;
-        padding: 10px;
-        margin: 15px;
-
-        .operation {
-          font-size: 4em;
-        }
-
-        .result {
-          font-size: 3.5em;
-        }
+  body {
+    header {
+      height: 15vh;
+      text-align: center;
+      padding-top: 10px;
+      .title {
+        font-size: 1.5em;
       }
-      .calculator__keys {
-        height: 80%;
+      .info {
+        font-size: 1em;
+      }
+    }
+
+    main {
+      height: 85vh;
+      .calculator {
+        width: 75%;
+        height: 90%;
+
+        .display {
+          height: 30%;
+          padding: 10px;
+          margin: 15px;
+
+          .operation {
+            font-size: 4em;
+          }
+
+          .result {
+            font-size: 3.5em;
+          }
+        }
+        .calculator__keys {
+          height: 80%;
+        }
       }
     }
   }
 }
 
 @media screen and (min-width: $breakpoint-laptop) {
-  main {
-    .calculator {
-      width: 35%;
+  body {
+    main {
+      .calculator {
+        width: 50%;
 
-      .display {
-        .operation {
-          font-size: 4em;
-        }
+        .display {
+          .operation {
+            font-size: 4em;
+          }
 
-        .result {
-          font-size: 2.5em;
+          .result {
+            font-size: 2.5em;
+          }
         }
       }
     }
