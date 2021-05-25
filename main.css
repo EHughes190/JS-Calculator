@@ -8,37 +8,37 @@
 
 body {
   height: 100vh;
+  width: 100vw;
   background: linear-gradient(to top, #565a75, #c6b7be);
 }
 
 header {
   height: 20vh;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   color: #fafbf6;
 }
 header .title {
-  font-size: 1rem;
-  padding: 10px;
+  font-size: 1em;
 }
 header .info {
-  padding: 10px;
-  font-size: 0.75rem;
+  padding: 5px;
+  font-size: 0.75em;
 }
 
 main {
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 main .calculator {
-  height: 80vh;
+  height: 100%;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   background-color: #151515;
 }
 main .calculator .display {
@@ -51,25 +51,25 @@ main .calculator .display {
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-  padding: 20px;
+  padding: 10px;
   margin: 20px;
   word-wrap: break-word;
   word-break: break-all;
   overflow-y: auto;
 }
 main .calculator .display .result {
-  font-size: 2.5rem;
+  font-size: 3em;
   color: rgba(255, 255, 255, 0.4);
 }
 main .calculator .display .operation {
-  font-size: 3.5rem;
+  font-size: 2em;
   color: white;
 }
 main .calculator .calculator__keys {
-  height: 60%;
+  height: 75%;
   width: 100%;
   display: grid;
-  padding: 20px;
+  padding: 10px;
   gap: 5px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
@@ -115,24 +115,47 @@ main .calculator .calculator__keys #answer:hover {
 
 @media screen and (min-width: 768px) {
   header {
+    height: 15vh;
     text-align: center;
-    padding: 10px;
+    padding-top: 10px;
   }
   header .title {
-    font-size: 1.5rem;
+    font-size: 1em;
   }
   header .info {
-    padding: 5px;
-    font-size: 1rem;
+    font-size: 0.5em;
   }
 
+  main {
+    height: 85vh;
+  }
   main .calculator {
     width: 60%;
-    height: 70vh;
+    height: 90%;
+  }
+  main .calculator .display {
+    height: 30%;
+    padding: 10px;
+    margin: 15px;
+  }
+  main .calculator .display .operation {
+    font-size: 4em;
+  }
+  main .calculator .display .result {
+    font-size: 3.5em;
+  }
+  main .calculator .calculator__keys {
+    height: 80%;
   }
 }
 @media screen and (min-width: 1024px) {
   main .calculator {
     width: 35%;
+  }
+  main .calculator .display .operation {
+    font-size: 4em;
+  }
+  main .calculator .display .result {
+    font-size: 2.5em;
   }
 }

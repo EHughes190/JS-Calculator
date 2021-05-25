@@ -19,37 +19,38 @@ $color-tertiary: rgb(210, 105, 30);
 
 body {
   height: 100vh;
+  width: 100vw;
   background: linear-gradient(to top, #565a75, #c6b7be);
 }
 
 header {
   height: 20vh;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   color: $color-secondary;
   .title {
-    font-size: 1rem;
-    padding: 10px;
+    font-size: 1em;
   }
   .info {
-    padding: 10px;
-    font-size: 0.75rem;
+    padding: 5px;
+    font-size: 0.75em;
   }
 }
 
 main {
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   .calculator {
-    height: 80vh;
+    height: 100%;
     width: 100%;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
     flex-direction: column;
+    //justify-content: flex-start;
+    align-items: center;
     background-color: $color-primary;
 
     .display {
@@ -62,28 +63,28 @@ main {
       flex-direction: column;
       justify-content: flex-end;
       align-items: flex-end;
-      padding: 20px;
+      padding: 10px;
       margin: 20px;
       word-wrap: break-word;
       word-break: break-all;
       overflow-y: auto;
 
       .result {
-        font-size: 2.5rem;
+        font-size: 3em;
         color: rgba(255, 255, 255, 0.4);
       }
 
       .operation {
-        font-size: 3.5rem;
+        font-size: 2em;
         color: rgb(255, 255, 255);
       }
     }
 
     .calculator__keys {
-      height: 60%;
+      height: 75%;
       width: 100%;
       display: grid;
-      padding: 20px;
+      padding: 10px;
       gap: 5px;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(5, 1fr);
@@ -139,21 +140,39 @@ main {
 
 @media screen and (min-width: $breakpoint-tablet) {
   header {
+    height: 15vh;
     text-align: center;
-    padding: 10px;
+    padding-top: 10px;
     .title {
-      font-size: 1.5rem;
+      font-size: 1em;
     }
     .info {
-      padding: 5px;
-      font-size: 1rem;
+      font-size: 0.5em;
     }
   }
 
   main {
+    height: 85vh;
     .calculator {
       width: 60%;
-      height: 70vh;
+      height: 90%;
+
+      .display {
+        height: 30%;
+        padding: 10px;
+        margin: 15px;
+
+        .operation {
+          font-size: 4em;
+        }
+
+        .result {
+          font-size: 3.5em;
+        }
+      }
+      .calculator__keys {
+        height: 80%;
+      }
     }
   }
 }
@@ -162,6 +181,16 @@ main {
   main {
     .calculator {
       width: 35%;
+
+      .display {
+        .operation {
+          font-size: 4em;
+        }
+
+        .result {
+          font-size: 2.5em;
+        }
+      }
     }
   }
 }
