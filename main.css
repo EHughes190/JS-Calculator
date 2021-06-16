@@ -11,7 +11,8 @@ body {
   width: 100vw;
   background: linear-gradient(to top, #565a75, #c6b7be);
 }
-body header {
+
+.header {
   height: 20vh;
   text-align: center;
   display: flex;
@@ -21,21 +22,23 @@ body header {
   padding: 5px;
   color: #fafbf6;
 }
-body header .title {
+.header__title {
   font-size: 1em;
 }
-body header .info {
+.header__info {
   padding: 5px;
   font-size: 0.75em;
 }
-body main {
+
+main {
   height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-body main .calculator {
+
+.calculator {
   height: 100%;
   width: 100%;
   display: flex;
@@ -43,7 +46,8 @@ body main .calculator {
   align-items: center;
   background-color: #151515;
 }
-body main .calculator .display {
+
+.display {
   height: 25%;
   width: 90%;
   background-color: rgba(255, 255, 255, 0.4);
@@ -59,15 +63,16 @@ body main .calculator .display {
   word-break: break-all;
   overflow-y: auto;
 }
-body main .calculator .display .result {
+.display__result {
   font-size: 3em;
   color: rgba(255, 255, 255, 0.4);
 }
-body main .calculator .display .operation {
+.display__operation {
   font-size: 2em;
   color: white;
 }
-body main .calculator .calculator__keys {
+
+.calculator__keys {
   height: 75%;
   width: 100%;
   display: grid;
@@ -76,7 +81,8 @@ body main .calculator .calculator__keys {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
 }
-body main .calculator .calculator__keys .button {
+
+.button {
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -84,84 +90,97 @@ body main .calculator .calculator__keys .button {
   border-color: #151515;
   border-radius: 5px;
   background-color: #151515;
-  font-size: 1.75rem;
+  font-size: 1.75em;
   color: #fafbf6;
 }
-body main .calculator .calculator__keys .button:hover {
+
+.button:hover {
   background-color: rgba(70, 69, 69, 0.1);
   color: chocolate;
 }
-body main .calculator .calculator__keys .button::selection,
-body main .calculator .calculator__keys .button::-moz-selection {
+
+.button::selection,
+.button::-moz-selection {
   color: none;
   background: none;
 }
-body main .calculator .calculator__keys .operator {
+
+.operator {
   background-color: rgba(86, 90, 117, 0.4);
-  font-size: 2.5rem;
+  font-size: 2.5em;
 }
-body main .calculator .calculator__keys .operator:hover {
+
+.operator:hover {
   background-color: #565a75;
 }
-body main .calculator .calculator__keys .span-two {
+
+.span-two {
   grid-column: span 2;
   border-radius: 0px;
   background-color: rgba(210, 105, 30, 0.8);
   color: #fafbf6;
 }
-body main .calculator .calculator__keys .span-two:hover {
+
+.span-two:hover {
   background-color: chocolate;
   color: #fafbf6;
 }
-body main .calculator .calculator__keys #answer {
+
+#answer {
   background-color: rgba(7, 45, 68, 0.6);
 }
-body main .calculator .calculator__keys #answer:hover {
+
+#answer:hover {
   background-color: #072d44;
 }
 
 @media screen and (min-width: 768px) {
-  body header {
+  .header {
     height: 15vh;
     text-align: center;
     padding-top: 10px;
   }
-  body header .title {
+  .header__title {
     font-size: 1.5em;
   }
-  body header .info {
+  .header__info {
     font-size: 1em;
   }
-  body main {
+
+  main {
     height: 85vh;
   }
-  body main .calculator {
+
+  .calculator {
     width: 75%;
     height: 90%;
   }
-  body main .calculator .display {
+
+  .display {
     height: 30%;
     padding: 10px;
     margin: 15px;
   }
-  body main .calculator .display .operation {
+  .display__operation {
     font-size: 4em;
   }
-  body main .calculator .display .result {
+  .display__result {
     font-size: 3.5em;
   }
-  body main .calculator .calculator__keys {
+
+  .calculator__keys {
     height: 80%;
   }
 }
 @media screen and (min-width: 1024px) {
-  body main .calculator {
+  .calculator {
     width: 50%;
   }
-  body main .calculator .display .operation {
+
+  .display__operation {
     font-size: 4em;
   }
-  body main .calculator .display .result {
+  .display__result {
     font-size: 2.5em;
   }
 }

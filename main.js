@@ -22,8 +22,8 @@
 //GLOBAL VARIABLES
 const calculator = document.querySelector(".calculator");
 const keys = document.querySelector(".calculator__keys");
-const operation = document.querySelector(".operation");
-const result = document.querySelector(".result");
+const operation = document.querySelector(".display__operation");
+const result = document.querySelector(".display__result");
 
 let operatorUsed = false;
 let hasBeenCalculated = false;
